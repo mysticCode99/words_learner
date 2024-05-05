@@ -1,23 +1,87 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <main class="container py-5">
-		<h1>Home page</h1>
-		<p class="lead">Integrate <a href="https://masonry.desandro.com/">Masonry</a> with the Bootstrap grid system and cards component.</p>
+  <header class="d-flex justify-content-center">
+    <ul class="nav nav-pills">
+      {% for btn in config.get_top_bar_buttons() %}
+      <li class="nav-item">
+        <a href="" class="nav-link btn btn-dark active" aria-current="page"
+          >{{ btn.name }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </header>
+  <h1>Home page</h1>
+  <p class="lead">
+    Integrate <a href="https://masonry.desandro.com/">Masonry</a> with the
+    Bootstrap grid system and cards component.
+  </p>
 
-		<hr class="my-5">
+  <hr class="my-5" />
 
-		<div class="row" data-masonry="{&quot;percentPosition&quot;: true }" style="position: relative; height: 690px;">
-			<div class="col-sm-6 col-lg-4 mb-4" style="position: absolute; left: 66.6667%; top: 0px;">
-				<div class="card">
-					<!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg> -->
-					<div class="card-body">
-						<h5 class="card-title">Learn English</h5>
-						<p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-					</div>
-				</div>
+  <div class="row">
+	<!-- SVG source https://www.svgrepo.com/collection/flags-collection-5 -->
+	<div class="col-4">
+		<div class="card">
+			<svg
+				class="bd-placeholder-img card-img-top"
+				width="100%"
+				height="200"
+				xmlns="http://www.w3.org/2000/svg"
+				role="img"
+				aria-label="Placeholder: Image cap"
+				preserveAspectRatio="xMidYMid slice"
+				focusable="false"
+			>
+				<title>Placeholder</title>
+				<rect width="100%" height="100%" fill="#868e96"></rect>
+				<text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+			</svg>
+			<div class="card-body">
+				<h5 class="card-title">Learn English</h5>
+				<p class="card-text">
+					<small class="text-body-secondary">Click to learn English words</small>
+				</p>
 			</div>
 		</div>
+	</div>
+	<div class="col-4">
+		<div class="card">
+			<a href="{{url_for('learn_italian')}}">
+				<svg
+					class="bd-placeholder-img card-img-top"
+					width="100%"
+					height="200"
+					xmlns="http://www.w3.org/2000/svg"
+					role="img"
+					aria-label="Placeholder: Image cap"
+					preserveAspectRatio="xMidYMid slice"
+					focusable="false"
+				>
+					<title>Placeholder</title>
+					<rect width="100%" height="100%" fill="#868e96"></rect>
+					<text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+				</svg>
+				<div class="card-body">
+					<h5 class="card-title">Learn Italian</h5>
+					<p class="card-text">
+						<small class="text-body-secondary">Click per studiare paroli Italiani</small>
+					</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="card text-bg-dark">
+			<img src="{{ url_for('static', filename='images/italian_flag_symbols_of_italy.jpg') }}" class="card-img" alt="...">
+			<div class="card-img-overlay">
+				<h5 class="card-title">Italiano</h5>
+				<p class="card-text">Click per studiare paroli Italiani</p>
+				<p class="card-text"><small>Last updated 3 mins ago</small></p>
+			</div>
+		</div>
+	</div>
 
-	</main>
+  </div>
+</main>
 {% endblock %}

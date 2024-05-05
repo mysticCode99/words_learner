@@ -13,7 +13,11 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title_name='Home')
+    return render_template('index.html', title_name='Home', config=Config_Provider.get_instance())
+
+@app.route('/learn_italian')
+def learn_italian():
+    return render_template('learn_word.html', title_name='Learn Italian', config=Config_Provider.get_instance())
 
 if __name__ == '__main__':
     # set_navbar_links()
